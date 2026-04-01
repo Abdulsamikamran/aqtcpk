@@ -74,9 +74,7 @@ export default function LoaderSplash() {
           <h2 className="text-4xl sm:text-5xl font-bold text-white font-heading mb-3">
             AQTC
           </h2>
-          <p className="text-white/80 text-lg font-medium">
-            Advanced Quality Tax Consultants
-          </p>
+          <p className="text-white/80 text-lg font-medium">Tax Consultants</p>
         </div>
 
         {/* Loading indicator */}
