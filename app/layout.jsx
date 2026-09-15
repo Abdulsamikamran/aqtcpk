@@ -1,18 +1,26 @@
-import { Inter, Poppins } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import LoaderSplash from "../components/loader-splash";
 import "./globals.css";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
   display: "swap",
 });
 
-const poppins = Poppins({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -31,7 +39,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#066787",
+  themeColor: "#07100f",
   width: "device-width",
   initialScale: 1,
 };
@@ -41,9 +49,9 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${poppins.variable}`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${manrope.variable}`}
     >
-      <body className="font-sans antialiased">
+      <body className="font-body antialiased bg-ink text-fg">
         <LoaderSplash />
         {children}
         <Analytics />

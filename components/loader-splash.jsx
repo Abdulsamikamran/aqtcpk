@@ -7,19 +7,15 @@ export default function LoaderSplash() {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    // Check if page is fully loaded
     const handlePageLoad = () => {
-      // Give a slight delay to ensure content is rendered
       setTimeout(() => {
         setIsAnimating(true);
-        // After animation completes (1 second), hide the splash
         setTimeout(() => {
           setIsVisible(false);
-        }, 1000);
-      }, 500);
+        }, 900);
+      }, 400);
     };
 
-    // If page is already loaded
     if (document.readyState === "complete") {
       handlePageLoad();
     } else {
@@ -32,74 +28,35 @@ export default function LoaderSplash() {
 
   return (
     <div
-      className={`fixed inset-0 z-[999] flex flex-col items-center justify-center brand-gradient overflow-hidden transition-all duration-1000 ease-out pointer-events-none ${
-        isAnimating ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"
+      className={`fixed inset-0 z-[999] flex flex-col items-center justify-center bg-ink-950 overflow-hidden transition-all duration-700 ease-out pointer-events-none ${
+        isAnimating ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
       }`}
     >
-      {/* Background gradient animation */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute w-96 h-96 rounded-full opacity-30 blur-3xl"
-          style={{
-            background: "rgba(255,255,255,0.1)",
-            left: "-100px",
-            top: "-100px",
-            animation: "pulse 4s ease-in-out infinite",
-          }}
-        />
-        <div
-          className="absolute w-96 h-96 rounded-full opacity-30 blur-3xl"
-          style={{
-            background: "rgba(255,255,255,0.1)",
-            right: "-100px",
-            bottom: "-100px",
-            animation: "pulse 4s ease-in-out infinite 1s",
-          }}
-        />
-      </div>
+      <div className="absolute inset-0 ledger-grid opacity-[0.08]" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center gap-6">
-        {/* Logo */}
-        <div className="w-24 h-24 rounded-2xl flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 shadow-2xl animate-bounce">
-          <img
-            src="/logo1.png"
-            alt="AQTC Logo"
-            className="w-16 h-16 object-contain"
-          />
+      <div className="relative z-10 flex flex-col items-center gap-6">
+        <div className="w-16 h-16 flex items-center justify-center border border-line-strong overflow-hidden">
+          <img src="/logo1.png" alt="AQTC Logo" className="w-full h-full object-cover" />
         </div>
 
-        {/* Text */}
         <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white font-heading mb-3">
-            AQTC
-          </h2>
-          <p className="text-white/80 text-lg font-medium">Tax Consultants</p>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-fg mb-2">AQTC</h2>
+          <p className="tag-mono text-fg-faint">Tax Consultants</p>
         </div>
 
-        {/* Loading indicator */}
-        <div className="mt-8 flex items-center gap-2">
+        <div className="w-40 h-px bg-line relative overflow-hidden mt-2">
           <div
-            className="w-2 h-2 rounded-full bg-white/60 animate-pulse"
-            style={{ animationDelay: "0s" }}
-          />
-          <div
-            className="w-2 h-2 rounded-full bg-white/60 animate-pulse"
-            style={{ animationDelay: "0.2s" }}
-          />
-          <div
-            className="w-2 h-2 rounded-full bg-white/60 animate-pulse"
-            style={{ animationDelay: "0.4s" }}
+            className="absolute inset-y-0 left-0 bg-accent"
+            style={{ animation: "loader-fill 1.1s ease-in-out infinite" }}
           />
         </div>
-
-        <p className="text-white/60 text-sm mt-6">Loading...</p>
       </div>
 
       <style>{`
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); opacity: 0.3; }
-          50% { transform: scale(1.1); opacity: 0.5; }
+        @keyframes loader-fill {
+          0% { width: 0%; }
+          60% { width: 100%; }
+          100% { width: 100%; }
         }
       `}</style>
     </div>

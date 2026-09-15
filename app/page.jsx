@@ -1,5 +1,6 @@
 import Navbar from "../components/navbar";
 import Hero from "../components/hero";
+import TrustBar from "../components/trust-bar";
 import Services from "../components/services";
 import About from "../components/about";
 import WhyUs from "../components/why-us";
@@ -8,16 +9,18 @@ import Resources from "../components/resources";
 import Testimonials from "../components/testimonials";
 import Faq from "../components/faq";
 import Contact from "../components/contact";
+import FinalCta from "../components/final-cta";
 import Footer from "../components/footer";
 import ScrollProgress from "../components/scroll-progress";
 import StickyCta from "../components/sticky-cta";
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-ink-900">
       <ScrollProgress />
       <Navbar />
       <Hero />
+      <TrustBar />
       <Services />
       <About />
       <WhyUs />
@@ -26,6 +29,7 @@ export default function Home() {
       <Testimonials />
       <Faq />
       <Contact />
+      <FinalCta />
       <Footer />
       <StickyCta />
     </main>
