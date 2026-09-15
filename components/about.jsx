@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "../hooks/use-in-view";
-import { CheckCircle } from "lucide-react";
+import { CheckSquare } from "@phosphor-icons/react";
 import Image from "next/image";
 
 const stats = [
-  { value: 20, suffix: "+", label: "Years Experience" },
-  { value: 500, suffix: "+", label: "Clients Served" },
-  { value: 98, suffix: "%", label: "Retention Rate" },
+  { value: 20, suffix: "+", label: "Years experience" },
+  { value: 500, suffix: "+", label: "Clients served" },
+  { value: 98, suffix: "%", label: "Retention rate" },
 ];
 
 const highlights = [
@@ -42,12 +42,14 @@ function Counter({ value, suffix, label, inView }) {
   }, [inView, value]);
 
   return (
-    <div className="text-center">
-      <div className="font-heading font-bold text-4xl lg:text-5xl brand-gradient-text">
+    <div className="flex flex-col">
+      <div className="font-mono font-semibold text-3xl lg:text-4xl text-fg">
         {count}
         {suffix}
       </div>
-      <div className="text-muted-foreground text-sm mt-1">{label}</div>
+      <div className="text-fg-faint text-xs uppercase tracking-wide mt-1">
+        {label}
+      </div>
     </div>
   );
 }
@@ -59,51 +61,50 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-24 overflow-x-hidden"
-      style={{ background: "#f4fafd" }}
+      className="relative py-28 lg:py-36 overflow-hidden bg-ink-950"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Image side */}
+      {/* oversized ghost numeral — editorial device */}
+      <span className="pointer-events-none select-none absolute -top-6 right-4 lg:right-10 font-display font-bold text-[clamp(6rem,18vw,14rem)] leading-none text-fg/[0.03]">
+        02
+      </span>
+
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-16 items-center">
+          {/* Image side — offset frame, overlapping caption */}
           <div
-            className={`relative transition-all duration-700 ${
+            className={`relative lg:col-span-5 transition-all duration-700 ${
               inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
-            style={{ transitionDelay: "100ms" }}
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
-              <Image
-                src="/images/about.jpg"
-                alt="AQTC team working in a modern office"
-                fill
-                className="object-cover"
-              />
-              {/* Overlay */}
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                  background: "linear-gradient(135deg, #066787, #0e98cd)",
-                }}
-              />
-            </div>
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-full h-full border border-line-strong hidden sm:block" />
+              <div className="relative aspect-[4/3] overflow-hidden border border-line">
+                <Image
+                  src="/images/about.jpg"
+                  alt="AQTC team working in a modern office"
+                  fill
+                  className="object-cover duotone"
+                />
+                <div
+                  className="absolute inset-0 mix-blend-color opacity-80"
+                  style={{
+                    background:
+                      "linear-gradient(160deg, var(--teal-deep), var(--ink-950))",
+                  }}
+                />
+              </div>
 
-            {/* Floating badge */}
-            <div
-              className="absolute -bottom-6 right-0 lg:right-6 glass rounded-2xl px-6 py-4 shadow-xl"
-              style={{ border: "1px solid rgba(6,103,135,0.2)" }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center brand-gradient">
-                  <span className="text-white font-bold text-xl font-heading">
-                    ✓
-                  </span>
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground text-sm">
-                    FBR Registered
-                  </div>
-                  <div className="text-muted-foreground text-xs">
-                    Certified Consultants
+              {/* Overlapping badge — breaks the grid edge */}
+              <div className="absolute -bottom-6 -right-4 sm:right-6 bg-ink-900 border border-line-strong px-6 py-4">
+                <div className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-accent pulse-dot" />
+                  <div>
+                    <div className="font-mono text-xs uppercase tracking-wide text-fg">
+                      FBR Registered
+                    </div>
+                    <div className="text-fg-faint text-[11px]">
+                      Certified Consultants
+                    </div>
                   </div>
                 </div>
               </div>
@@ -113,43 +114,39 @@ export default function About() {
           {/* Text side */}
           <div
             ref={sectionRef}
-            className={`transition-all duration-700 ${
+            className={`lg:col-span-7 transition-all duration-700 ${
               inView ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             }`}
-            style={{ transitionDelay: "200ms" }}
+            style={{ transitionDelay: "150ms" }}
           >
-            <span
-              className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4 text-white"
-              style={{ background: "#066787" }}
-            >
-              About AQTC
-            </span>
-            <h2 className="font-heading font-bold text-4xl lg:text-5xl text-foreground mb-6 text-balance">
-              20+ Years of{" "}
-              <span className="brand-gradient-text">Tax Excellence</span>
+            <div className="tag-mono text-accent mb-4">02 / About AQTC</div>
+            <h2 className="font-display font-bold text-4xl lg:text-5xl text-fg mb-6 leading-[1.03] text-balance">
+              20+ years of tax excellence.
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+            <p className="text-fg-dim text-lg leading-relaxed mb-10 max-w-xl border-l border-line-strong pl-5">
               AQTC is a Pakistan-based tax consultancy firm with over 20 years
               of experience helping individuals, freelancers, and businesses
               manage their taxes efficiently. We combine deep expertise with a
               client-first approach to deliver results you can count on.
             </p>
 
-            <ul className="space-y-4 mb-10">
+            <ul className="grid sm:grid-cols-2 gap-4 mb-12">
               {highlights.map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <CheckCircle
-                    size={20}
-                    className="flex-shrink-0"
-                    style={{ color: "#066787" }}
+                <li key={item} className="flex items-start gap-3">
+                  <CheckSquare
+                    size={18}
+                    weight="light"
+                    className="flex-shrink-0 text-accent mt-0.5"
                   />
-                  <span className="text-foreground text-sm">{item}</span>
+                  <span className="text-fg-dim text-sm leading-snug">
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-line">
               {stats.map((stat) => (
                 <Counter key={stat.label} {...stat} inView={inView} />
               ))}

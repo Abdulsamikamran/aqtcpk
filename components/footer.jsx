@@ -1,21 +1,11 @@
 "use client";
 
-import {
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
+import { EnvelopeSimple, Phone, MapPin, FacebookLogo, InstagramLogo, LinkedinLogo, XLogo } from "@phosphor-icons/react";
 
 const quickLinks = [
   { label: "Services", href: "#services" },
   { label: "About Us", href: "#about" },
   { label: "Why AQTC", href: "#why-us" },
-  // { label: "Our Team", href: "#team" },
-  // { label: "Resources", href: "#resources" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -29,10 +19,10 @@ const services = [
 ];
 
 const socials = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: FacebookLogo, href: "#", label: "Facebook" },
+  { icon: XLogo, href: "#", label: "X" },
+  { icon: LinkedinLogo, href: "#", label: "LinkedIn" },
+  { icon: InstagramLogo, href: "#", label: "Instagram" },
 ];
 
 export default function Footer() {
@@ -42,49 +32,47 @@ export default function Footer() {
   };
 
   return (
-    <footer className="text-white pt-16 pb-8" style={{ background: "#033a4d" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+    <footer className="bg-ink-950 text-fg pt-20 pb-8 border-t border-line">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 rounded-xl flex items-center justify-center brand-gradient shadow-md">
-                <img src="/logo1.png" alt="AQTC Logo" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 flex items-center justify-center border border-line overflow-hidden">
+                <img src="/logo1.png" alt="AQTC Logo" className="w-full h-full object-cover" />
               </div>
               <div>
-                <div className="font-bold text-lg font-heading">AQTC</div>
-                <div className="text-white/50 text-xs">Tax Consultants</div>
+                <div className="font-display font-bold text-lg">AQTC</div>
+                <div className="tag-mono text-fg-faint">Tax Consultants</div>
               </div>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed mb-6">
+            <p className="text-fg-dim text-sm leading-relaxed mb-6">
               AQTC Pakistan — your trusted partner for all tax and compliance
               needs.
             </p>
-            {/* <div className="flex gap-3">
+            <div className="flex gap-2">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+                  className="w-9 h-9 flex items-center justify-center border border-line text-fg-dim hover:text-accent hover:border-accent/50 transition-colors"
                 >
-                  <Icon size={16} />
+                  <Icon size={15} weight="light" />
                 </a>
               ))}
-            </div> */}
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-white/50 mb-5">
-              Quick Links
-            </h4>
-            <ul className="flex flex-col gap-3">
+            <h4 className="tag-mono text-fg-faint mb-6">Quick Links</h4>
+            <ul className="flex flex-col gap-3.5">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-white/70 text-sm hover:text-white transition-colors cursor-pointer"
+                    className="text-fg-dim text-sm hover:text-accent transition-colors cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -95,13 +83,11 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-white/50 mb-5">
-              Our Services
-            </h4>
-            <ul className="flex flex-col gap-3">
+            <h4 className="tag-mono text-fg-faint mb-6">Our Services</h4>
+            <ul className="flex flex-col gap-3.5">
               {services.map((s) => (
                 <li key={s}>
-                  <span className="text-white/70 text-sm">{s}</span>
+                  <span className="text-fg-dim text-sm">{s}</span>
                 </li>
               ))}
             </ul>
@@ -109,41 +95,30 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-white/50 mb-5">
-              Contact Info
-            </h4>
+            <h4 className="tag-mono text-fg-faint mb-6">Contact Info</h4>
             <div className="flex flex-col gap-4">
               <div className="flex items-start gap-3">
-                <MapPin
-                  size={16}
-                  className="text-white/40 mt-0.5 flex-shrink-0"
-                />
-                <span className="text-white/70 text-sm">
+                <MapPin size={16} weight="light" className="text-fg-faint mt-0.5 flex-shrink-0" />
+                <span className="text-fg-dim text-sm">
                   Victoria Heights, Service Rd E, Islamabad, Pakistan
                 </span>
               </div>
               <div className="flex items-start gap-3">
-                <Mail
-                  size={16}
-                  className="text-white/40 mt-0.5 flex-shrink-0"
-                />
+                <EnvelopeSimple size={16} weight="light" className="text-fg-faint mt-0.5 flex-shrink-0" />
                 <a
-                  href="mailto:info@aqtc.com.pk"
-                  className="text-white/70 text-sm hover:text-white transition-colors"
+                  href="mailto:aqtcpk@gmail.com"
+                  className="text-fg-dim text-sm hover:text-accent transition-colors"
                 >
-                  aqtcpk@gmail.com{" "}
+                  aqtcpk@gmail.com
                 </a>
               </div>
               <div className="flex items-start gap-3">
-                <Phone
-                  size={16}
-                  className="text-white/40 mt-0.5 flex-shrink-0"
-                />
+                <Phone size={16} weight="light" className="text-fg-faint mt-0.5 flex-shrink-0" />
                 <a
-                  href="tel:+923001234567"
-                  className="text-white/70 text-sm hover:text-white transition-colors"
+                  href="tel:+923215118939"
+                  className="text-fg-dim text-sm hover:text-accent transition-colors"
                 >
-                  +92 321 5118939{" "}
+                  +92 321 5118939
                 </a>
               </div>
             </div>
@@ -151,22 +126,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/40 text-sm">
+        <div className="border-t border-line pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-fg-faint text-xs">
             &copy; {new Date().getFullYear()} AQTC Consultants Pakistan. All
             rights reserved.
           </p>
           <div className="flex gap-6">
-            <a
-              href="#"
-              className="text-white/40 text-xs hover:text-white/70 transition-colors"
-            >
+            <a href="#" className="text-fg-faint text-xs hover:text-fg-dim transition-colors">
               Privacy Policy
             </a>
-            <a
-              href="#"
-              className="text-white/40 text-xs hover:text-white/70 transition-colors"
-            >
+            <a href="#" className="text-fg-faint text-xs hover:text-fg-dim transition-colors">
               Terms of Service
             </a>
           </div>
